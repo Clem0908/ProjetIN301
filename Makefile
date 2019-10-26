@@ -1,9 +1,9 @@
-run: exec
-	./exec
+partie1: main1
+	./main1
 	
-exec: main.c
-	gcc -Wall -o exec main.c
+main1: main1.c
+	gcc -Wall -o main1 main1.c
 	
 clean:
-	rm -rf *.o
-	ls -lt
+	rm -rf main1
+	ls -l
