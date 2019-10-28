@@ -5,3 +5,5 @@ typedef struct sequence{
 	char *suiv; //Pointeur vers le cararctère suivant de la séquence
 
 } SEQUENCE;
+
+SEQUENCE *lire_depuis_fichier(SEQUENCE *s);
