@@ -9,9 +9,12 @@
 
 int main(){
 	
-	SEQUENCE *s; //Pointeur vers une SEQUENCE s
-	s = NULL;
-	s = lire_depuis_fichier(s);
+	SEQUENCE *s = init_sequence();
+	
+	char nom_fic[10];
+	printf("Nom du fichier à ouvrir : \n");
+	scanf("%s",nom_fic);
+	s = lire_depuis_fichier(nom_fic);
 	
 	exit(0);
 }
