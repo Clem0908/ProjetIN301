@@ -14,7 +14,12 @@ SEQUENCE *lire_depuis_fichier(SEQUENCE *s){
 		
 	FILE *f1 = NULL;	
 	f1 = fopen("seq01.txt","r");
-	
+		
+		if(f1 == NULL){
+			
+			printf("Erreur lors de l'ouverture du fichier \n");
+		}	
+		
 	int count = 0;
 	
 		while(feof(f1) != 0){ //Compte la longueur de la chaîne
@@ -22,13 +27,7 @@ SEQUENCE *lire_depuis_fichier(SEQUENCE *s){
 			count++;
 		}
 		
-	char str1[count];
-	
-		if(f1 == NULL){
-			
-			printf("Erreur lors de l'ouverture du fichier \n");
-		}
-						
+	char str1[count];					
 	fscanf(f1,"%s",str1);
 	printf("%s \n",str1);	
 	fclose(f1);
