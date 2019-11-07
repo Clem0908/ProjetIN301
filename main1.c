@@ -3,9 +3,9 @@
 #include <time.h>
 #include <ctype.h>
 #include <math.h>
-#include "sequence.c"
-#include "distance.c"
-
+#include <unistd.h>
+#include "sequence.h"
+#include "distance.h"
 
 int main(int argc, char **argv){
 	
@@ -18,9 +18,19 @@ int main(int argc, char **argv){
 			return 0;
 		}
 	
-	SEQUENCE *s = init_sequence();
+	SEQUENCE *s1;
+	s1 = init_sequence();
+	s1 = lire_depuis_fichier(argv[1]);
+		
+		if(s1 == NULL){ printf("Problème main1.c \n"); return 0;}
+	ret = chdir("ProjetIN301");
 	
-	s = lire_depuis_fichier(argv[1]);
-	
+		if(ret == -1){				 
+			
+			printf("Erreur lors du changement de dossier \n");
+			
+			return 0;
+		}
+		
 	exit(0);
 }

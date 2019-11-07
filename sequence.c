@@ -1,33 +1,56 @@
 #include "sequence.h"
 #include <stdio.h>
-#include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
 
-SEQUENCE *lire_depuis_fichier(char *argv){
+int compter_longueur_sequence(char *argv){
+	
+	FILE *F = NULL;	
+	F = fopen(argv,"r");
 		
-	FILE *f1 = NULL;	
-	f1 = fopen(nom_fic,"r");
-		
-		if(f1 == NULL){
+		if(F == NULL){
 			
-			printf("Erreur lors de l'ouverture du fichier \n");
+			printf("Erreur lors de l'ouverture du fichier (func compter_longueur_sequence) \n");
 			
 			return 0;
-		}	
+		}
 		
 	int count = 0;
 	
-		while(feof(f1) != 0){ //Compte la longueur de la chaîne
+		while(feof(F) != 0){ //Compte la longueur de la chaîne
 			
-			count++;
-		}					
-	
-	SEQUENCE *s = malloc(sizeof(SEQUENCE *));
-	s->n = count;
-	s->c = malloc(count * sizeof(char));	
-	fscanf(f1,"%s",s->c[0]);
-	fclose(f1);
+				count++;
+			}
+			
+	return count;
+}
+
+SEQUENCE *lire_depuis_fichier(char *argv){
+		
+	int count = compter_longueur_sequence(argv);
+							
+	SEQUENCE *s = init_sequence();
+	s->n = count; s->c = malloc(count * sizeof(char));
+		
+		if(s->c == NULL){
+			
+			printf("Erreur allocation mémoire (func lire_depuis_fichier) \n");
+			return 0;
+		}
+		
+	FILE *F = NULL;	
+	F = fopen(argv,"r");
+		
+	int ret_lecture_string = fscanf(F,"%s",s->c);
+		
+		if(ret_lecture_string != count){
+			
+			printf("Problème lecture fichier (func lire_depuis_fichier) \n"); 
+			return 0;
+		}
+		
+	printf("Séquence lue : %s \n",s->c);
+	fclose(F);
 	
 	return s;
 }
@@ -35,11 +58,12 @@ SEQUENCE *lire_depuis_fichier(char *argv){
 SEQUENCE *init_sequence(){
 	
 	SEQUENCE *s = NULL; //Initialisation du pointeur de la séquence à NULL
+	s->n = 0; 			//Initialisation de la longueur de la séquence à 0
 	
 	return s;
 }
 
-float calcul_distance(SEQUENCE *s1, SEQUENCE *s2){
+/*float calcul_distance(SEQUENCE *s1, SEQUENCE *s2){
 
 		if(strlen(s1->c) != strlen(s2->c)) return 0;
 	
@@ -88,3 +112,4 @@ float calcul_distance(SEQUENCE *s1, SEQUENCE *s2){
 		
 	return dist;
 }
+*/
