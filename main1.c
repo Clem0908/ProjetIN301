@@ -7,7 +7,7 @@
 #include "distance.c"
 
 
-int main(){
+int main(int argc, char **argv){
 	
 	SEQUENCE *s = init_sequence();
 	
