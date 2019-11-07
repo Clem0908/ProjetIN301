@@ -4,16 +4,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-SEQUENCE *lire_depuis_fichier(char *nom_fic){
-	
-	int ret = chdir("sequences_ADN"); //Change le dossier courant pour aller voir les fichiers séquences ADN
-		
-		if(ret == -1){				  //chdir() retourne -1 si échec et 0 si succès
-			
-			printf("Erreur lors du changement de dossier \n");
-			
-			return 0;
-		}
+SEQUENCE *lire_depuis_fichier(char *argv){
 		
 	FILE *f1 = NULL;	
 	f1 = fopen(nom_fic,"r");

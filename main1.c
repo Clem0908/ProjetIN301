@@ -9,12 +9,18 @@
 
 int main(int argc, char **argv){
 	
+	int ret = chdir("sequences_ADN"); //Change le dossier courant pour aller voir les fichiers séquences ADN
+		
+		if(ret == -1){				  //chdir() retourne -1 si échec et 0 si succès
+			
+			printf("Erreur lors du changement de dossier \n");
+			
+			return 0;
+		}
+	
 	SEQUENCE *s = init_sequence();
 	
-	char nom_fic[10];
-	printf("Nom du fichier à ouvrir : \n");
-	scanf("%s",nom_fic);
-	s = lire_depuis_fichier(nom_fic);
+	s = lire_depuis_fichier(argv[1]);
 	
 	exit(0);
 }
