@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int compter_longueur_sequence(char *argv){
 	
@@ -27,6 +28,15 @@ int compter_longueur_sequence(char *argv){
 
 SEQUENCE *lire_depuis_fichier(char *argv){
 		
+	int ret = chdir("sequences_ADN"); //Change le dossier courant pour aller voir les fichiers séquences ADN
+		
+		if(ret == -1){				  //chdir() retourne -1 si échec et 0 si succès
+			
+			printf("Erreur lors du changement de dossier \n");
+			
+			return 0;
+		}
+	
 	int count = compter_longueur_sequence(argv);
 							
 	SEQUENCE *s = init_sequence();
@@ -52,6 +62,7 @@ SEQUENCE *lire_depuis_fichier(char *argv){
 	printf("Séquence lue : %s \n",s->c);
 	fclose(F);
 	
+	chdir("ProjetIN301");
 	return s;
 }
 
