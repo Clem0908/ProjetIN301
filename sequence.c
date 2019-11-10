@@ -22,12 +22,14 @@ int compter_longueur_sequence(char *argv){
 			
 				count++;
 			}
-			
+	
+	fclose(F);	
+		
 	return count;
 }
 
 SEQUENCE *lire_depuis_fichier(char *argv){
-		
+
 	int ret = chdir("sequences_ADN"); //Change le dossier courant pour aller voir les fichiers séquences ADN
 		
 		if(ret == -1){				  //chdir() retourne -1 si échec et 0 si succès
@@ -50,15 +52,7 @@ SEQUENCE *lire_depuis_fichier(char *argv){
 		
 	FILE *F = NULL;	
 	F = fopen(argv,"r");
-		
-	int ret_lecture_string = fscanf(F,"%s",s->c);
-		
-		if(ret_lecture_string != count){
-			
-			printf("Problème lecture fichier (func lire_depuis_fichier) \n"); 
-			return 0;
-		}
-		
+	fscanf(F,"%s",s->c);
 	printf("Séquence lue : %s \n",s->c);
 	fclose(F);
 	
