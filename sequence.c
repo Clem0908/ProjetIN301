@@ -74,53 +74,51 @@ SEQUENCE *init_sequence(){
 	return s;
 }
 
-/*float calcul_distance(SEQUENCE *s1, SEQUENCE *s2){
+float calcul_distance(SEQUENCE *s1, SEQUENCE *s2){
 
 		if(strlen(s1->c) != strlen(s2->c)) return 0;
 	
 	int i = 0;
-	int j = 0;
 	int dist = 0;
 	
-		while(s1->c[i][j] != '\0'){
+		while(s1->c[i] != '\0'){
 			
-			if(s1->c[i][j] != s2->c[i][j]){
+			if(s1->c[i] != s2->c[i]){
 				
-				if(((s1->c[i][j] == 'A') && (s2->c[i][j] == 'G')) ||((s1->c[i][j] == 'G') && (s2->c[i][j] == 'A'))){
+				if(((s1->c[i] == 'A') && (s2->c[i] == 'G')) ||((s1->c[i] == 'G') && (s2->c[i] == 'A'))){
 					
 					dist += 1;
 				}
 				
-				if(((s1->c[i][j] == 'C') && (s2->c[i][j] == 'T')) ||((s1->c[i][j] == 'T') && (s2->c[i][j] == 'C'))){
+				if(((s1->c[i] == 'C') && (s2->c[i] == 'T')) ||((s1->c[i] == 'T') && (s2->c[i] == 'C'))){
 					
 					dist += 1;
 				}
 				
-				if(((s1->c[i][j] == 'A') && (s2->c[i][j] == 'C')) ||((s1->c[i][j] == 'C') && (s2->c[i][j] == 'A'))){
+				if(((s1->c[i] == 'A') && (s2->c[i] == 'C')) ||((s1->c[i] == 'C') && (s2->c[i] == 'A'))){
 					
 					dist += 2;
 				}
 				
-				if(((s1->c[i][j] == 'A') && (s2->c[i][j] == 'T')) ||((s1->c[i][j] == 'T') && (s2->c[i][j] == 'A'))){
+				if(((s1->c[i] == 'A') && (s2->c[i] == 'T')) ||((s1->c[i] == 'T') && (s2->c[i] == 'A'))){
 					
 					dist += 2;
 				}
 				
-				if(((s1->c[i][j] == 'C') && (s2->c[i][j] == 'G')) ||((s1->c[i][j] == 'G') && (s2->c[i][j] == 'C'))){
+				if(((s1->c[i] == 'C') && (s2->c[i] == 'G')) ||((s1->c[i] == 'G') && (s2->c[i] == 'C'))){
 					
 					dist += 2;
 				}
 				
-				if(((s1->c[i][j] == 'G') && (s2->c[i][j] == 'T')) ||((s1->c[i][j] == 'T') && (s2->c[i][j] == 'G'))){
+				if(((s1->c[i] == 'G') && (s2->c[i] == 'T')) ||((s1->c[i] == 'T') && (s2->c[i] == 'G'))){
 					
 					dist += 2;
 				}
 			}
 			
 			dist+=0;
-			j++;
+			i++;
 		}
 		
 	return dist;
 }
-*/
